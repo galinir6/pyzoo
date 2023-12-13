@@ -1,7 +1,7 @@
 from enum import Enum
 import json
 import os
-
+from icecream import ic
 from helper import save_list , load_list
 
 class Actions(Enum):
@@ -27,11 +27,18 @@ def main():
     animals = load_list(data_file , animals)
     while(True):
         userSelection = menu()
-        if userSelection == Actions.PRINT: print(animals)
+        if userSelection == Actions.PRINT: print_animals()
         if userSelection == Actions.ADD: add_func()
         if userSelection == Actions.SEARCH: print(search_func())      
         if userSelection == Actions.DELETE: del_func()
         if userSelection == Actions.EXIT: exit_func()
+
+
+# print animals
+def print_animals():
+    for animal in animals:
+        ic(animal)
+
 
 # add animal
 def add_func():
